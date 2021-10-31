@@ -1,0 +1,29 @@
+name: Workflow Scan Action
+author: "rcowsill"
+description: Scan GitHub Actions workflow files with CodeQL
+
+inputs:
+  data-dir-name:
+    description: Name of the directory which will hold data needed by the action
+    default: workflow-scan-action-data
+
+runs:
+  using: composite
+  steps:
+    - name: Configure CodeQL for workflow security scanning
+      run: . "$GITHUB_ACTION_PATH/setup.sh"
+      shell: bash
+      env:
+        DATA_DIR_NAME: ${{ inputs.data-dir-name }}
+
+    - uses: github/codeql-action/init@v1
+      with:
+        config-file: ./${{ inputs.data-dir-name }}/workflow-scan-config.yml
+        queries: ./${{ inputs.data-dir-name }}/workflow-security-suite.qls
+        languages: javascript
+
+    - uses: github/codeql-action/analyze@v1
+
+branding:
+  icon: search
+  color: gray-dark

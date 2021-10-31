@@ -1,0 +1,5 @@
+- description: Experimental security queries for GitHub Actions workflow files
+- queries: .
+  from: codeql/javascript-queries
+  include:
+    tags contain all: [actions, security]
