@@ -13,10 +13,14 @@ main() {
 }
 
 print_codeql_env() {
+  local -r QUERY_SUITE="./$DATA_DIR_NAME/workflow-security-suite.qls"
   local -r ANALYSIS_PATHS=(
     "$DATA_DIR_NAME/stub.js"
     '.github/workflows'
   )
+
+  echo "WSA_CONFIG_PATH=./$DATA_DIR_NAME/workflow-scan-config.yml"
+  echo "WSA_QUERIES=$QUERY_SUITE${EXTRA_QUERIES:+,}$EXTRA_QUERIES"
 
   echo 'LGTM_INDEX_INCLUDE<<EOF'
   printf '%s\n' "${ANALYSIS_PATHS[@]}"

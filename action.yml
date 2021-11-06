@@ -6,6 +6,9 @@ inputs:
   data-dir-name:
     description: Name of the directory which will hold data needed by the action
     default: workflow-scan-action-data
+  extra-queries:
+    description: Comma-separated list of additional queries to run
+    default: ""
 
 runs:
   using: composite
@@ -15,11 +18,12 @@ runs:
       shell: bash
       env:
         DATA_DIR_NAME: ${{ inputs.data-dir-name }}
+        EXTRA_QUERIES: ${{ inputs.extra-queries }}
 
     - uses: github/codeql-action/init@v1
       with:
-        config-file: ./${{ inputs.data-dir-name }}/workflow-scan-config.yml
-        queries: ./${{ inputs.data-dir-name }}/workflow-security-suite.qls
+        config-file: ${{ env.WSA_CONFIG_PATH }}
+        queries: ${{ env.WSA_QUERIES }}
         languages: javascript
 
     - uses: github/codeql-action/analyze@v1
