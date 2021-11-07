@@ -55,3 +55,10 @@ jobs:
           # Optional comma-separated list of extra queries/suites to run
           # extra-queries: ./local-query.ql,./local-suite.qls
 ```
+
+## Further Reading
+
+These articles give more detail on the issues that the actions security queries are designed to detect:
+
+* [Keeping your GitHub Actions and workflows secure: Part 1](https://securitylab.github.com/research/github-actions-preventing-pwn-requests/)
+* [Keeping your GitHub Actions and workflows secure: Part 2](https://securitylab.github.com/research/github-actions-untrusted-input/)
