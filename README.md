@@ -4,6 +4,12 @@
 
 This action makes it easy to scan GitHub Actions workflow files with CodeQL. It's mainly intended for repos that aren't already using CodeQL on their source code.
 
+The [Github Security Lab](https://securitylab.github.com/) created [two CodeQL queries](https://github.com/github/codeql/tree/main/javascript/ql/src/experimental/Security/CWE-094) for use on GitHub Actions workflows, but didn't provide detailed instructions on how to use them. There don't appear to be any public projects using these queries to validate their workflow files.
+
+`workflow-scan-action` configures CodeQL to scan files in `.github/workflows` with the actions security queries. It includes the stub .js file required by CodeQL to perform a workflow scan. The scan itself is done by the official [GitHub codeql-action](https://github.com/github/codeql-action/).
+
+To set it up, simply add a new workflow to your repo based on the template shown in the [usage](#usage) section.
+
 ## License
 
 This project is released under the [MIT License](LICENSE).
