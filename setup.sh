@@ -20,7 +20,12 @@ print_codeql_env() {
   )
 
   echo "WSA_CONFIG_PATH=./$DATA_DIR_NAME/workflow-scan-config.yml"
-  echo "WSA_QUERIES=$QUERY_SUITE${EXTRA_QUERIES:+,}$EXTRA_QUERIES"
+  
+  if [[ "$USE_DEFAULT_QUERIES" == "true" ]]; then 
+    local -r DEFAULT_QUERIES="$QUERY_SUITE${EXTRA_QUERIES:+,}"
+  fi
+    
+  echo "WSA_QUERIES=$DEFAULT_QUERIES$EXTRA_QUERIES"
 
   echo 'LGTM_INDEX_INCLUDE<<EOF'
   printf '%s\n' "${ANALYSIS_PATHS[@]}"
