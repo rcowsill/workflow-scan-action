@@ -3,12 +3,18 @@ author: "rcowsill"
 description: Scan GitHub Actions workflow files with CodeQL
 
 inputs:
-  data-dir-name:
-    description: Name of the directory which will hold data needed by the action
-    default: workflow-scan-action-data
   extra-queries:
     description: Comma-separated list of additional queries to run
     default: ""
+  use-default-queries:
+    description: Whether to use the default workflow-security-suite queries
+    default: true
+  upload:
+    description: Whether to upload the SARIF file to Code Scanning
+    default: true
+  data-dir-name:
+    description: Name of the directory which will hold data needed by the action
+    default: workflow-scan-action-data
 
 runs:
   using: composite
@@ -19,6 +25,7 @@ runs:
       env:
         DATA_DIR_NAME: ${{ inputs.data-dir-name }}
         EXTRA_QUERIES: ${{ inputs.extra-queries }}
+        USE_DEFAULT_QUERIES: ${{ inputs.use-default-queries }}
 
     - uses: github/codeql-action/init@v1
       with:
@@ -27,6 +34,8 @@ runs:
         languages: javascript
 
     - uses: github/codeql-action/analyze@v1
+      with:
+        upload: ${{ inputs.upload }}
 
 branding:
   icon: search
