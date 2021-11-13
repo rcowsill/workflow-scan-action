@@ -37,6 +37,12 @@ runs:
       with:
         upload: ${{ inputs.upload }}
 
+    - uses: github/codeql-action/init@v1
+      with:
+        config-file: ${{ env.WSA_CONFIG_PATH }}
+        queries: ${{ env.WSA_QUERIES }}
+        languages: javascript
+
     - uses: github/codeql-action/analyze@v1
       with:
         upload: false
