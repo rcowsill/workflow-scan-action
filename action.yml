@@ -37,6 +37,10 @@ runs:
       with:
         upload: ${{ inputs.upload }}
 
+    - uses: github/codeql-action/analyze@v1
+      with:
+        upload: false
+
 branding:
   icon: search
   color: gray-dark
