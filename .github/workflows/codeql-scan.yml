@@ -20,4 +20,4 @@ jobs:
         with:
           persist-credentials: false
 
-      - uses: rcowsill/workflow-scan-action@v1
+      - uses: rcowsill/workflow-scan-action@v2
