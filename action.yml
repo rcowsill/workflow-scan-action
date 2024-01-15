@@ -27,13 +27,13 @@ runs:
         EXTRA_QUERIES: ${{ inputs.extra-queries }}
         USE_DEFAULT_QUERIES: ${{ inputs.use-default-queries }}
 
-    - uses: github/codeql-action/init@v2
+    - uses: github/codeql-action/init@v3
       with:
         config-file: ${{ env.WSA_CONFIG_PATH }}
         queries: ${{ env.WSA_QUERIES }}
         languages: javascript
 
-    - uses: github/codeql-action/analyze@v2
+    - uses: github/codeql-action/analyze@v3
       with:
         upload: ${{ inputs.upload }}
 
