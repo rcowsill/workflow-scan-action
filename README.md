@@ -52,7 +52,7 @@ jobs:
           persist-credentials: false
 
       - name: Perform CodeQL Analysis
-        uses: rcowsill/workflow-scan-action@v2
+        uses: rcowsill/workflow-scan-action@v3
 ```
 
 ## Options
@@ -62,7 +62,7 @@ jobs:
 > Comma-separated list of additional queries to run, eg:
 > 
 > ```yaml
-> uses: rcowsill/workflow-scan-action@v2
+> uses: rcowsill/workflow-scan-action@v3
 > with:
 >   extra-queries: "./my-local-query.ql,my-org/my-repo/my-remote-suite.qls@main"
 > ```
@@ -84,7 +84,7 @@ jobs:
 > Name of the directory which will hold data needed by the action, eg:
 > 
 > ```yaml
-> uses: rcowsill/workflow-scan-action@v2
+> uses: rcowsill/workflow-scan-action@v3
 > with:
 >   data-dir-name: ".hidden-wsa-data"
 > ```
